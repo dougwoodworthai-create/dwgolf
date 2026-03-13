@@ -461,10 +461,83 @@ const G = {
 };
 
 // ═══════════════════════════════════════════════════
+//  SEED DATA  (pre-loaded historical rounds)
+// ═══════════════════════════════════════════════════
+const SEED = [
+  {id:'s01', date:'2025-08-24', course:'Steeple Chase Golf Club',          holes:18, cr:73.6, slope:141, score:97,  par:72, putts:null, gir:null, fw:null, tod:'morning', wx:'sunny', temp:'normal'},
+  {id:'s02', date:'2025-08-17', course:'Sunset Valley Golf Club',           holes:18, cr:71.5, slope:132, score:93,  par:72, putts:null, gir:null, fw:null, tod:'morning', wx:'sunny', temp:'normal'},
+  {id:'s03', date:'2025-08-10', course:"Shepherd's Crook Golf Course",      holes:18, cr:72.3, slope:133, score:103, par:72, putts:null, gir:null, fw:null, tod:'morning', wx:'sunny', temp:'normal'},
+  {id:'s04', date:'2025-08-02', course:'Pine Meadow Golf Club',             holes:18, cr:71.6, slope:132, score:95,  par:72, putts:null, gir:null, fw:null, tod:'morning', wx:'sunny', temp:'normal'},
+  {id:'s05', date:'2025-07-20', course:'Thunderhawk Golf Club',             holes:18, cr:72.8, slope:140, score:98,  par:72, putts:null, gir:null, fw:null, tod:'morning', wx:'sunny', temp:'normal'},
+  {id:'s06', date:'2025-07-04', course:'Preserve at Oak Meadows',           holes:18, cr:72.4, slope:138, score:112, par:72, putts:null, gir:null, fw:null, tod:'morning', wx:'sunny', temp:'normal'},
+  {id:'s07', date:'2025-06-22', course:'Mount Prospect Golf Club',          holes:18, cr:70.3, slope:135, score:98,  par:72, putts:null, gir:null, fw:null, tod:'morning', wx:'sunny', temp:'normal'},
+  {id:'s08', date:'2025-06-14', course:'MaKray Memorial Golf Club',         holes:18, cr:72.8, slope:134, score:102, par:72, putts:null, gir:null, fw:null, tod:'morning', wx:'sunny', temp:'normal'},
+  {id:'s09', date:'2025-06-07', course:'Sunset Valley Golf Club',           holes:18, cr:71.5, slope:132, score:100, par:72, putts:null, gir:null, fw:null, tod:'morning', wx:'sunny', temp:'normal'},
+  {id:'s10', date:'2025-05-24', course:'Mount Prospect Golf Club',          holes:18, cr:70.3, slope:135, score:103, par:72, putts:null, gir:null, fw:null, tod:'morning', wx:'sunny', temp:'normal'},
+  {id:'s11', date:'2025-05-24', course:'Mount Prospect Golf Club',          holes:18, cr:70.3, slope:135, score:103, par:72, putts:null, gir:null, fw:null, tod:'afternoon',wx:'sunny', temp:'normal'},
+  {id:'s12', date:'2025-04-19', course:'White Deer Run',                    holes:18, cr:71.6, slope:142, score:99,  par:72, putts:null, gir:null, fw:null, tod:'morning', wx:'sunny', temp:'normal'},
+  {id:'s13', date:'2025-04-13', course:'Heritage Oaks Golf Club',           holes:18, cr:70.2, slope:128, score:88,  par:72, putts:null, gir:null, fw:null, tod:'morning', wx:'sunny', temp:'normal'},
+  {id:'s14', date:'2025-03-29', course:'Heritage Oaks Golf Club',           holes:18, cr:70.2, slope:128, score:86,  par:72, putts:null, gir:null, fw:null, tod:'morning', wx:'sunny', temp:'normal'},
+  {id:'s15', date:'2024-10-26', course:'Deerpath Golf Course',              holes:18, cr:70.3, slope:130, score:92,  par:72, putts:null, gir:null, fw:null, tod:'morning', wx:'sunny', temp:'normal'},
+  {id:'s16', date:'2024-10-19', course:'Glencoe Golf Club',                 holes:18, cr:72.3, slope:133, score:89,  par:72, putts:null, gir:null, fw:null, tod:'morning', wx:'sunny', temp:'normal'},
+  {id:'s17', date:'2024-09-15', course:'Glencoe Golf Club',                 holes:18, cr:70.7, slope:129, score:88,  par:72, putts:null, gir:null, fw:null, tod:'morning', wx:'sunny', temp:'normal'},
+  {id:'s18', date:'2024-09-14', course:'Preserve at Oak Meadows',           holes:18, cr:72.4, slope:138, score:94,  par:72, putts:null, gir:null, fw:null, tod:'morning', wx:'sunny', temp:'normal'},
+  {id:'s19', date:'2024-09-01', course:'Sunset Valley Golf Club',           holes:18, cr:71.5, slope:132, score:94,  par:72, putts:null, gir:null, fw:null, tod:'morning', wx:'sunny', temp:'normal'},
+  {id:'s20', date:'2024-08-11', course:"Shepherd's Crook Golf Course",      holes:18, cr:72.3, slope:133, score:93,  par:72, putts:null, gir:null, fw:null, tod:'morning', wx:'sunny', temp:'normal'},
+  {id:'s21', date:'2024-07-27', course:'Wilmette Golf Course',              holes:18, cr:70.3, slope:127, score:96,  par:72, putts:null, gir:null, fw:null, tod:'morning', wx:'sunny', temp:'normal'},
+  {id:'s22', date:'2024-07-13', course:'Steeple Chase Golf Club',           holes:18, cr:71.8, slope:137, score:94,  par:72, putts:null, gir:null, fw:null, tod:'morning', wx:'sunny', temp:'normal'},
+  {id:'s23', date:'2024-07-07', course:'Heritage Oaks Golf Club',           holes:18, cr:70.2, slope:128, score:86,  par:72, putts:null, gir:null, fw:null, tod:'morning', wx:'sunny', temp:'normal'},
+  {id:'s24', date:'2024-07-05', course:'Aldeen Golf Club',                  holes:18, cr:71.4, slope:134, score:89,  par:72, putts:null, gir:null, fw:null, tod:'morning', wx:'sunny', temp:'normal'},
+  {id:'s25', date:'2024-06-30', course:'Stonewall Orchard GC',              holes:18, cr:72.0, slope:140, score:93,  par:72, putts:null, gir:null, fw:null, tod:'morning', wx:'sunny', temp:'normal'},
+  {id:'s26', date:'2024-06-22', course:'Thunderhawk Golf Club',             holes:18, cr:72.4, slope:137, score:94,  par:72, putts:null, gir:null, fw:null, tod:'morning', wx:'sunny', temp:'normal'},
+  {id:'s27', date:'2024-06-17', course:'The Glen Club',                     holes:18, cr:72.4, slope:134, score:92,  par:72, putts:null, gir:null, fw:null, tod:'morning', wx:'sunny', temp:'normal'},
+  {id:'s28', date:'2024-06-08', course:'Deerpath Golf Course',              holes:18, cr:70.2, slope:131, score:99,  par:72, putts:null, gir:null, fw:null, tod:'morning', wx:'sunny', temp:'normal'},
+  {id:'s29', date:'2024-06-03', course:'Heritage Oaks Golf Club',           holes:18, cr:70.2, slope:128, score:91,  par:72, putts:null, gir:null, fw:null, tod:'morning', wx:'sunny', temp:'normal'},
+  {id:'s30', date:'2024-05-24', course:'The Glen Club',                     holes:18, cr:71.0, slope:130, score:91,  par:72, putts:null, gir:null, fw:null, tod:'morning', wx:'sunny', temp:'normal'},
+  {id:'s31', date:'2024-05-22', course:'Mount Prospect Golf Club',          holes:18, cr:70.3, slope:135, score:97,  par:72, putts:null, gir:null, fw:null, tod:'morning', wx:'sunny', temp:'normal'},
+  {id:'s32', date:'2024-05-11', course:'Pine Meadow Golf Club',             holes:18, cr:71.5, slope:131, score:95,  par:72, putts:null, gir:null, fw:null, tod:'morning', wx:'sunny', temp:'normal'},
+  {id:'s33', date:'2024-04-27', course:'Glencoe Golf Club',                 holes:18, cr:72.3, slope:133, score:97,  par:72, putts:null, gir:null, fw:null, tod:'morning', wx:'sunny', temp:'normal'},
+  {id:'s34', date:'2024-04-27', course:'Heritage Oaks Golf Club',           holes:18, cr:70.2, slope:128, score:90,  par:72, putts:null, gir:null, fw:null, tod:'afternoon',wx:'sunny', temp:'normal'},
+  {id:'s35', date:'2024-04-14', course:'Glencoe Golf Club',                 holes:18, cr:72.3, slope:133, score:94,  par:72, putts:null, gir:null, fw:null, tod:'morning', wx:'sunny', temp:'normal'},
+  {id:'s36', date:'2024-03-30', course:'Deerfield Golf Club',               holes:18, cr:71.6, slope:130, score:95,  par:72, putts:null, gir:null, fw:null, tod:'morning', wx:'sunny', temp:'normal'},
+  {id:'s37', date:'2023-12-27', course:'The Links of Naples',               holes:18, cr:60.5, slope:98,  score:77,  par:72, putts:null, gir:null, fw:null, tod:'morning', wx:'sunny', temp:'normal'},
+  {id:'s38', date:'2023-12-24', course:'Hibiscus Golf Club',                holes:18, cr:71.1, slope:131, score:88,  par:72, putts:null, gir:null, fw:null, tod:'morning', wx:'sunny', temp:'normal'},
+  {id:'s39', date:'2023-09-04', course:'Mount Prospect Golf Club',          holes:18, cr:70.3, slope:135, score:98,  par:72, putts:null, gir:null, fw:null, tod:'morning', wx:'sunny', temp:'normal'},
+  {id:'s40', date:'2023-09-03', course:'Traditions at Chevy Chase',         holes:18, cr:71.8, slope:130, score:93,  par:72, putts:null, gir:null, fw:null, tod:'morning', wx:'sunny', temp:'normal'},
+  {id:'s41', date:'2023-08-26', course:'Deerpath Golf Course',              holes:18, cr:70.2, slope:131, score:94,  par:72, putts:null, gir:null, fw:null, tod:'morning', wx:'sunny', temp:'normal'},
+  {id:'s42', date:'2023-08-20', course:'Bonnie Brook Golf Course',          holes:18, cr:72.3, slope:130, score:95,  par:72, putts:null, gir:null, fw:null, tod:'morning', wx:'sunny', temp:'normal'},
+  {id:'s43', date:'2023-08-12', course:'Preserve at Oak Meadows',           holes:18, cr:72.4, slope:138, score:100, par:72, putts:null, gir:null, fw:null, tod:'morning', wx:'sunny', temp:'normal'},
+  {id:'s44', date:'2023-07-30', course:'Glenview Park Golf Club',           holes:18, cr:69.6, slope:128, score:93,  par:72, putts:null, gir:null, fw:null, tod:'morning', wx:'sunny', temp:'normal'},
+  {id:'s45', date:'2023-07-22', course:'Thunderhawk Golf Club',             holes:18, cr:72.4, slope:137, score:93,  par:72, putts:null, gir:null, fw:null, tod:'morning', wx:'sunny', temp:'normal'},
+  {id:'s46', date:'2023-07-16', course:'Countryside Golf Club',             holes:18, cr:71.0, slope:123, score:94,  par:72, putts:null, gir:null, fw:null, tod:'morning', wx:'sunny', temp:'normal'},
+  {id:'s47', date:'2023-07-09', course:'Deerfield Golf Club',               holes:18, cr:71.6, slope:130, score:90,  par:72, putts:null, gir:null, fw:null, tod:'morning', wx:'sunny', temp:'normal'},
+  {id:'s48', date:'2023-07-03', course:'Highland Woods',                    holes:18, cr:70.6, slope:122, score:87,  par:72, putts:null, gir:null, fw:null, tod:'morning', wx:'sunny', temp:'normal'},
+  {id:'s49', date:'2023-06-24', course:'Heritage Oaks Golf Club',           holes:18, cr:70.2, slope:128, score:88,  par:72, putts:null, gir:null, fw:null, tod:'morning', wx:'sunny', temp:'normal'},
+  {id:'s50', date:'2023-06-19', course:'Cog Hill Golf & Country Club',      holes:18, cr:72.2, slope:136, score:89,  par:72, putts:null, gir:null, fw:null, tod:'morning', wx:'sunny', temp:'normal'},
+  {id:'s51', date:'2023-06-10', course:'Lake Bluff Golf Club',              holes:18, cr:71.8, slope:127, score:85,  par:72, putts:null, gir:null, fw:null, tod:'morning', wx:'sunny', temp:'normal'},
+  {id:'s52', date:'2023-06-04', course:'Old Orchard Country Club',          holes:18, cr:70.3, slope:134, score:99,  par:72, putts:null, gir:null, fw:null, tod:'morning', wx:'sunny', temp:'normal'},
+  {id:'s53', date:'2023-05-28', course:'Pine Meadow Golf Club',             holes:18, cr:72.2, slope:133, score:95,  par:72, putts:null, gir:null, fw:null, tod:'morning', wx:'sunny', temp:'normal'},
+  {id:'s54', date:'2023-05-21', course:'Pine Meadow Golf Club',             holes:18, cr:71.5, slope:131, score:93,  par:72, putts:null, gir:null, fw:null, tod:'morning', wx:'sunny', temp:'normal'},
+  {id:'s55', date:'2023-05-20', course:'Lake Bluff Golf Club',              holes:18, cr:71.8, slope:127, score:92,  par:72, putts:null, gir:null, fw:null, tod:'morning', wx:'sunny', temp:'normal'},
+  {id:'s56', date:'2023-05-07', course:'Arboretum Club',                    holes:18, cr:71.7, slope:139, score:96,  par:72, putts:null, gir:null, fw:null, tod:'morning', wx:'sunny', temp:'normal'},
+  {id:'s57', date:'2023-04-23', course:'The Glen Club',                     holes:18, cr:72.4, slope:134, score:98,  par:72, putts:null, gir:null, fw:null, tod:'morning', wx:'sunny', temp:'normal'},
+  {id:'s58', date:'2023-04-15', course:'Deerpath Golf Course',              holes:18, cr:70.2, slope:131, score:91,  par:72, putts:null, gir:null, fw:null, tod:'morning', wx:'sunny', temp:'normal'},
+];
+
+// ═══════════════════════════════════════════════════
 //  PERSISTENCE
 // ═══════════════════════════════════════════════════
 function load() {
-  try { const d = localStorage.getItem('gs2025'); if (d) G.rounds = JSON.parse(d).rounds||[]; } catch(e){}
+  try {
+    const d = localStorage.getItem('gs2025');
+    if (d) {
+      G.rounds = JSON.parse(d).rounds||[];
+    } else {
+      // First run — seed with historical data
+      G.rounds = SEED.map(r => Object.assign({},r));
+      save();
+    }
+  } catch(e) { G.rounds = SEED.map(r => Object.assign({},r)); }
 }
 function save() {
   localStorage.setItem('gs2025', JSON.stringify({rounds:G.rounds}));
